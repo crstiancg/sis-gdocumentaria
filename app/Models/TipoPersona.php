@@ -10,4 +10,8 @@ class TipoPersona extends Model
     use HasFactory;
 
     protected $fillable = ['nombre'];
+
+    public function Remitente(){
+        return $this->hasMany(Remitente::class);
+    }
 }

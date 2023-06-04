@@ -10,4 +10,8 @@ class Oficina extends Model
     use HasFactory;
 
     protected $fillable = ['nombre'];
+
+    public function Documento(){
+        return $this->hasMany(Documento::class);
+    }
 }
