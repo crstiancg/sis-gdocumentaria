@@ -48,6 +48,7 @@ class DocumentoResource extends Resource
                     ->maxLength(255),
                 Forms\Components\DateTimePicker::make('fingreso')
                     ->default(now())
+                    ->disabled()
                     ->required(),
             ]);
     }
