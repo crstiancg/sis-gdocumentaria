@@ -22,6 +22,7 @@ class MesaAyudaResource extends Resource
     protected static ?string $model = MesaAyuda::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationGroup = 'Mesa de ayuda';
 
     public static function form(Form $form): Form
     {
@@ -30,12 +31,13 @@ class MesaAyudaResource extends Resource
                 Card::make()
                 ->schema([
                     Forms\Components\TextInput::make('numero')
+                        ->label('Número')
                         ->required(),
                      Forms\Components\TextInput::make('asunto')
                         ->required()
                         ->maxLength(255),
                      Forms\Components\FileUpload::make('archivo')
-                        ->label('Seleccione Archivo PDF')
+                        ->label('Seleccione archivo PDF')
                         ->acceptedFileTypes(['application/pdf'])
                         ->enableOpen()
                         ->enableDownload()
@@ -44,15 +46,17 @@ class MesaAyudaResource extends Resource
                     Forms\Components\TextInput::make('folio')
                         ->required()
                         ->maxLength(255),
-                    Forms\Components\DatePicker::make('fingreso')
+                    Forms\Components\DateTimePicker::make('fingreso')
+                        ->label('Fecha de Ingreso')
                         ->default(now())
                         ->required(),
+                        
                     Select::make('estado')
                     ->options([
-                                'Revision' => 'En revisión',
+                                'Revisión' => 'En revisión',
                                 'Aceptado' => 'Aceptado',
                                 'No Aceptado' => 'No Aceptado',
-                    ])->default('Revision'),
+                    ])->default('Revisión'),
                     Forms\Components\Select::make('remitente_id')
                         ->relationship('Remitente', 'nombre')
                         ->preload()
@@ -75,12 +79,12 @@ class MesaAyudaResource extends Resource
                 Tables\Columns\TextColumn::make('asunto'),
                 BadgeColumn::make('estado')
                     ->enum([
-                        'Revision' => 'En revisión',
+                        'Revisión' => 'En revisión',
                         'Aceptado' => 'Aceptado',
                         'No Aceptado' => 'No Aceptado',
                     ])
                     ->colors([
-                        'secondary' => 'Revision',
+                        'secondary' => 'Revisión',
                         'warning' => 'reviewing',
                         'success' => 'Aceptado',
                         'danger' => 'No Aceptado',

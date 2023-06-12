@@ -6,6 +6,8 @@ use App\Filament\Resources\DocumentoResource\Pages;
 use App\Filament\Resources\DocumentoResource\RelationManagers;
 use App\Models\Documento;
 use Filament\Forms;
+use Filament\Forms\Components\Card;
+use Filament\Forms\Components\Grid;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -23,34 +25,46 @@ class DocumentoResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('oficina_id')
-                    ->relationship('Oficina', 'nombre')
-                    ->default(3)
-                    ->required(),
-                Forms\Components\Select::make('tipo_documento_id')
-                    ->relationship('TipoDocumento', 'nombre')
-                    ->preload()
-                    ->required(),
-                Forms\Components\TextInput::make('numero')
-                    ->required(),
-                Forms\Components\TextInput::make('asunto')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\FileUpload::make('archivo')
-                    ->label('Seleccione Archivo PDF')
-                    ->acceptedFileTypes(['application/pdf'])
-                    ->enableOpen()
-                    ->enableDownload()
-                    ->preserveFilenames()
-                    ->required(),
-                Forms\Components\TextInput::make('folio')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\DateTimePicker::make('fingreso')
-                    ->default(now())
-                    ->disabled()
-                    ->required(),
-            ]);
+                Card::make()
+                    ->schema([
+                        Forms\Components\Select::make('oficina_id')
+                            ->relationship('Oficina', 'nombre')
+                            ->default(3)
+                            ->required(),
+                        Forms\Components\Select::make('tipo_documento_id')
+                            ->label('Tipo de documento')
+                            ->relationship('TipoDocumento', 'nombre')
+                            ->preload()
+                            ->required(),
+                        Forms\Components\TextInput::make('numero')
+                            ->label('Número de documento')
+                            ->required(),
+                        Forms\Components\TextInput::make('asunto')
+                            ->label('Asunto/Sumilla')
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('folio')
+                            ->required()
+                            ->maxLength(255),
+
+                    ])->columnSpan(7),
+
+                Card::make()
+                    ->schema([
+                        Forms\Components\FileUpload::make('archivo')
+                            ->label('Seleccione archivo PDF')
+                            ->acceptedFileTypes(['application/pdf'])
+                            ->enableOpen()
+                            ->enableDownload()
+                            ->preserveFilenames()
+                            ->required(),
+                        Forms\Components\DateTimePicker::make('fingreso')
+                            ->label('Fecha de ingreso')
+                            ->default(now())
+                            ->disabled()
+                            ->required(),
+                    ])->columnSpan(5)
+            ])->columns(12);
     }
 
     public static function table(Table $table): Table
@@ -76,14 +90,14 @@ class DocumentoResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -92,5 +106,5 @@ class DocumentoResource extends Resource
             'view' => Pages\ViewDocumento::route('/{record}'),
             'edit' => Pages\EditDocumento::route('/{record}/edit'),
         ];
-    }    
+    }
 }
