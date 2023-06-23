@@ -16,7 +16,7 @@ export default {
             },
             colors: { 
                 danger: colors.rose,
-                primary: colors.blue,
+                primary: colors.teal,
                 success: colors.green,
                 warning: colors.yellow,
             }, 

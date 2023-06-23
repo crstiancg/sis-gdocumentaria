@@ -3,7 +3,10 @@
 namespace App\Providers;
 
 use Filament\Facades\Filament;
+use Filament\Navigation\UserMenuItem;
+use Filament\Navigation\NavigationItem;
 use Illuminate\Support\ServiceProvider;
+use Filament\Navigation\NavigationGroup;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,7 +26,12 @@ class AppServiceProvider extends ServiceProvider
         Filament::serving(function () {
             // Using Vite
             Filament::registerViteTheme('resources/css/filament.css');
-            
+            Filament::registerUserMenuItems([
+                UserMenuItem::make()
+                    ->label('Settings')
+                    ->icon('heroicon-s-cog'),
+                // ...
+            ]);
         });
     }
 }

@@ -23,6 +23,9 @@ class MesaAyudaResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
+    protected static ?string $activeNavigationIcon = 'heroicon-s-document-text';
+
+
     public static function form(Form $form): Form
     {
         return $form
