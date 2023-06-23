@@ -27,19 +27,24 @@ class RemitenteResource extends Resource
                 Card::make()
                 ->schema([
                     Forms\Components\Select::make('tipo_persona_id')
+                        ->label('Tipo de persona')
                         ->relationship('TipoPersona', 'nombre')
                         ->preload()
                         ->required(),
                     Forms\Components\TextInput::make('dni')
+                        ->label('DNI')
                         ->required()
                         ->maxLength(8),
                     Forms\Components\TextInput::make('nombre')
+                        ->label('Nombre(s)')
                         ->required()
                         ->maxLength(255),
                     Forms\Components\TextInput::make('paterno')
+                        ->label('Apellido Paterno')
                         ->required()
                         ->maxLength(255),
                     Forms\Components\TextInput::make('materno')
+                        ->label('Apellido Materno')
                         ->required()
                         ->maxLength(255),
                     Forms\Components\TextInput::make('correo')
