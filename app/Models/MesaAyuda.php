@@ -11,6 +11,7 @@ class MesaAyuda extends Model
 
     protected $fillable = ['numero', 'asunto', 'archivo', 'folio', 'fingreso', 'estado', 'remitente_id', 'tipo_documento_id'];
 
+    protected $casts = ['fingreso' => 'date'];
     public function Remitente(){
         return $this->belongsTo(Remitente::class);
     }
@@ -18,5 +19,14 @@ class MesaAyuda extends Model
     public function TipoDocumento(){
         return $this->belongsTo(TipoDocumento::class);
     }
-    
+
+
+    public function getStatusColorAttribute()
+    {
+        return [
+            'Revision' => 'gray',
+            'Aceptado' => 'green',
+            'No Aceptado' => 'red',
+        ][$this->estado] ?? 'cool-green';
+    }    
 }

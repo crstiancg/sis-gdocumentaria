@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,10 +22,12 @@
                 </a>
             </div> --}}
 
+            <div class="w-full">
 
-                <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
                     {{ $slot }}
                 </div>
+            </div>
         </div>
     </body>
 </html>

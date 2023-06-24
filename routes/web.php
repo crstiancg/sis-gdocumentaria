@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Livewire\Formtable;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,4 +31,7 @@ Route::middleware('auth')->group(function () {
 Route::get('/ayuda', function (){
     return view('ayuda');
 });
+Route::get('table',Formtable::class);
+
+
 require __DIR__.'/auth.php';

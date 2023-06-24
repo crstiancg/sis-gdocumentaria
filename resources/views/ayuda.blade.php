@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-front-layout>
     <div class="py-12 bg-white rounded p-6 shadow-lg">
         <h1 class="text-center text-2xl font-semibold text-gray-900 dark:text-white">ENVÍO DE DOCUMENTOS</h1>
         <hr>
@@ -122,4 +122,4 @@
             </div>
         </form>
     </div>
-</x-guest-layout>
+</x-front-layout>
