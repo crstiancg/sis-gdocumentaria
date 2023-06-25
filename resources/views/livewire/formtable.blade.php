@@ -7,19 +7,17 @@
         <div class="w-1/4">
             <x-input.text id="asunto" wire:model="search" placeholder="Buscar Documento..."></x-input.text>
         </div>
-        <div class="flex justify-end items-end">
-            <button wire:click='revision' class="inline-flex items-center mr-4 px-4 py-2 leading-5 bg-gray-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">Revisión</button>
-            <button wire:click='aceptado' class="inline-flex items-center mr-4 px-4 py-2 leading-5 bg-green-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-700 focus:bg-green-700 active:bg-green-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">Aceptado</button>
-            <button wire:click='noaceptado' class="inline-flex items-center px-4 py-2 leading-5 bg-red-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-700 focus:bg-red-700 active:bg-red-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">No Aceptado</button>
-        </div>
+            <button wire:click="revision('Revision')" class="inline-flex items-center mr-4 px-4 py-2 leading-5 bg-gray-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">Revisión</button>
+            <button wire:click="aceptado('Aceptado')" class="inline-flex items-center mr-4 px-4 py-2 leading-5 bg-green-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-700 focus:bg-green-700 active:bg-green-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">Aceptado</button>
+            <button wire:click="noaceptado('No Aceptado')" class="inline-flex items-center px-4 py-2 leading-5 bg-red-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-700 focus:bg-red-700 active:bg-red-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">No Aceptado</button>
         <div class="flex-col space-y-4">
             <x-table>
                 <x-slot name="head">
-                    <x-table.heading>Asunto</x-table.heading>
-                    <x-table.heading>Número</x-table.heading>
-                    <x-table.heading>Administrado</x-table.heading>
-                    <x-table.heading>Estado</x-table.heading>
-                    <x-table.heading>Fecha de Ingreso</x-table.heading>
+                    <x-table.heading sortable>Asunto</x-table.heading>
+                    <x-table.heading sortable>Número</x-table.heading>
+                    <x-table.heading sortable>Administrado</x-table.heading>
+                    <x-table.heading sortable>Estado</x-table.heading>
+                    <x-table.heading sortable>Fecha de Ingreso</x-table.heading>
                 </x-slot>
         
                 <x-slot name="body">
@@ -58,9 +56,9 @@
                     @endforelse
                 </x-slot>
             </x-table>
-            {{-- <div>
+            <div>
                 {{ $noaceptado->links() }}
-            </div> --}}
+            </div>
         </div>
     </div>
 </div>

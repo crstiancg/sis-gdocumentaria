@@ -28,9 +28,10 @@
                     </select>
                 </div>
                 <div class="bg-white rounded p-6 shadow-lg mb-4">
-                    <div class="bg-gray-800 text-center font-semibold text-white rounded text-xl">
+                    <div class="text-center font-semibold text-gray-800 rounded text-xl">
                         <h2  class="text-center">DATOS DEL ADMINISTRADO</h2>
                     </div>
+                    <hr>
                     <div class="lg:columns-2 mt-4">
                         <div class="mb-4">
                             <x-input-label>Documento de Identidad *</x-input-label>
@@ -75,9 +76,10 @@
                 </div>
 
                 <div class="bg-white rounded p-6 shadow-lg mb-6">
-                    <div class="bg-gray-800 text-center font-semibold text-white rounded text-xl">
+                    <div class="text-center font-semibold text-gray-800 rounded text-xl">
                         <h2  class="text-center">DATOS DEL DOCUMENTO</h2>
                     </div>
+                    <hr>
                         <div class="mb-4 mt-4">
                             <x-input-label>Tipo de Documento *</x-input-label>
                             <x-text-input type="text" class="w-full" name="name" id="name" value="" />
