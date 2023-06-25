@@ -27,6 +27,6 @@ class MesaAyuda extends Model
             'Revision' => 'gray',
             'Aceptado' => 'green',
             'No Aceptado' => 'red',
-        ][$this->estado] ?? 'cool-green';
+        ][$this->estado] ?? 'cool-gray';
     }    
 }

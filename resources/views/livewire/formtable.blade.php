@@ -1,11 +1,11 @@
-<x-front-layout>
+<div>
     <h1 class="text-2xl font-semibold text-gray-900 text-center mb-8">
         LISTADO DE DOCUMENTOS
     </h1>
 
     <div class="py-4 space-y-4">
         <div class="w-1/4">
-            <x-input.text wire:model="search" placeholder="Search file ..."></x-input.text>
+            <x-input.text id="asunto" wire:model="search" placeholder="Buscar Documento..."></x-input.text>
         </div>
         <div class="flex-col space-y-4">
             <x-table>
@@ -48,4 +48,5 @@
             </div>
         </div>
     </div>
-</x-front-layout>
+</div>
+
