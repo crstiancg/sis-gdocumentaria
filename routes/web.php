@@ -31,7 +31,7 @@ Route::middleware('auth')->group(function () {
 Route::get('/ayuda', function (){
     return view('ayuda');
 });
-Route::get('table',Formtable::class);
+Route::get('/table',Formtable::class);
 
 
 require __DIR__.'/auth.php';

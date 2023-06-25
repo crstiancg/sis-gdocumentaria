@@ -7,15 +7,30 @@ use Livewire\Component;
 class Formtable extends Component
 {
     public $search="";
-    public $estado="";
+    public $estado="Revision";
     public function render()
     {
         return view('livewire.formtable',[
-        
-            'noaceptado' => MesaAyuda::select('*')->where('estado','No Aceptado')->orderby('id','desc')->search("asunto", $this->search)->paginate(1),
-            'aceptado' => MesaAyuda::select('*')->where('estado','Aceptado')->orderby('id','desc')->search("asunto", $this->search)->paginate(1),
-            'revision' => MesaAyuda::select('*')->where('estado','Revision')->orderby('id','desc')->search("asunto", $this->search)->paginate(1),
+
+            'noaceptado' => MesaAyuda::select('*')->where('estado',$this->estado)->orderby('id','desc')->search("asunto", $this->search)->get(),
+            // 'aceptado' => MesaAyuda::select('*')->where('estado','Aceptado')->orderby('id','desc')->search("asunto", $this->search)->paginate(1),
+            // 'revision' => MesaAyuda::select('*')->where('estado','Revision')->orderby('id','desc')->search("asunto", $this->search)->paginate(1),
 
         ]);
+    }
+
+    public function revision()
+    {
+        $this->estado = "Revision";
+    }
+
+    public function aceptado()
+    {
+        $this->estado = "Aceptado";
+    }
+
+    public function noaceptado()
+    {
+        $this->estado = "No aceptado";
     }
 }
