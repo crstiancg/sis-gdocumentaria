@@ -31,6 +31,11 @@ Route::middleware('auth')->group(function () {
 Route::get('/ayuda', function (){
     return view('ayuda');
 });
+
+Route::post('/ayuda', function(){
+    return "Se envió satisfactoriamente";
+});
+
 Route::get('/table',Formtable::class);
 
 
