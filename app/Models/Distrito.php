@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TipoPersona extends Model
+class Distrito extends Model
 {
     use HasFactory;
 
     protected $fillable = ['nombre'];
 
-    public function remitentes(){
-        return $this->hasMany(Remitente::class);
+    public function provincias()
+    {
+        return $this->hasMany(Provincia::class);
     }
 }

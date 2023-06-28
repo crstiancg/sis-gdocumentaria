@@ -9,16 +9,36 @@ class Remitente extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['dni', 'nombre', 'paterno', 'materno', 'correo', 'celular', 'tipo_persona_id'];
+    protected $fillable = [
+        'dni', 
+        'nombre', 
+        'paterno', 
+        'materno', 
+        'correo', 
+        'celular',
+        'razonsocial', 
+        'tipo_persona_id',
+        'departamento_id',
+    ];
 
 
-    public function TipoPersona(){
+    public function tipoPersona(){
         return $this->belongsTo(TipoPersona::class);
     }
 
 
-    public function MesaAyuda(){
+    public function mesaAyudas(){
         return $this->hasMany(MesaAyuda::class);
+    }
+
+    public function departamento()
+    {
+        return $this->belongsTo(Departamento::class);
+    }
+
+    public function documentos()
+    {
+        return $this->hasMany(Documento::class);
     }
 
 }

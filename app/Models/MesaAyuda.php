@@ -9,14 +9,24 @@ class MesaAyuda extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['numero', 'asunto', 'archivo', 'folio', 'fingreso', 'estado', 'remitente_id', 'tipo_documento_id'];
+    protected $fillable = [
+        'numero', 
+        'asunto', 
+        'archivo', 
+        'folio', 
+        'fingreso', 
+        'estado', 
+        'remitente_id', 
+        'tipo_documento_id',
+        'oficina_id',
+        'procedimiento_id'];
 
     protected $casts = ['fingreso' => 'date'];
-    public function Remitente(){
+    public function remitente(){
         return $this->belongsTo(Remitente::class);
     }
 
-    public function TipoDocumento(){
+    public function tipoDocumento(){
         return $this->belongsTo(TipoDocumento::class);
     }
 
@@ -28,5 +38,15 @@ class MesaAyuda extends Model
             'Aceptado' => 'green',
             'No Aceptado' => 'red',
         ][$this->estado];
-    }    
+    }
+    
+    public function procedimiento()
+    {
+        return $this->belongsTo(Procedimiento::class);
+    }
+
+    public function oficina()
+    {
+        return $this->belongsTo(Oficina::class);
+    }
 }

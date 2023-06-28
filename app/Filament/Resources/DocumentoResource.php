@@ -21,6 +21,11 @@ class DocumentoResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
+    // public function query(Documento $query)
+    // {
+    //     $query->where('user_id', auth()->user()->id);
+    // }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -31,6 +36,15 @@ class DocumentoResource extends Resource
                             ->relationship('Oficina', 'nombre')
                             ->default(3)
                             ->required(),
+                        Forms\Components\Select::make('remitente_id')
+                            ->relationship('remitente', 'nombre')
+                            ->required(),
+                        Forms\Components\Select::make('procedimiento_id')
+                            ->relationship('procedimiento', 'nombre')
+                            ->required(),
+                        Forms\Components\Select::make('indicacion_id')
+                            ->relationship('indicacion', 'nombre')
+                            ->required(),
                         Forms\Components\Select::make('tipo_documento_id')
                             ->label('Tipo de documento')
                             ->relationship('TipoDocumento', 'nombre')
@@ -39,6 +53,12 @@ class DocumentoResource extends Resource
                         Forms\Components\TextInput::make('numero')
                             ->label('Número de documento')
                             ->required(),
+                        Forms\Components\TextInput::make('ntramite')
+                            ->label('Número de tramite')
+                            ->required(),
+                        Forms\Components\TextInput::make('respuesta')
+                            ->label('Respuesta')
+                            ->required(),
                         Forms\Components\TextInput::make('asunto')
                             ->label('Asunto/Sumilla')
                             ->required()
@@ -46,6 +66,23 @@ class DocumentoResource extends Resource
                         Forms\Components\TextInput::make('folio')
                             ->required()
                             ->maxLength(255),
+                        Forms\Components\DateTimePicker::make('fechadoc')
+                            ->label('Fecha de documento')
+                            ->required(),
+                        Forms\Components\MarkdownEditor::make('observacion')
+                            ->disableToolbarButtons([
+                                'attachFiles',
+                                'bold',
+                                'bulletList',
+                                'codeBlock',
+                                'edit',
+                                'italic',
+                                'link',
+                                'orderedList',
+                                'preview',
+                                'strike',
+                            ]),
+
 
                     ])->columnSpan(7),
 

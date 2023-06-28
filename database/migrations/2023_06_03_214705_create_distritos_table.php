@@ -11,15 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('remitentes', function (Blueprint $table) {
+        Schema::create('distritos', function (Blueprint $table) {
             $table->id();
-            $table->string('dni', 9);
             $table->string('nombre');
-            $table->string('paterno');
-            $table->string('materno');
-            $table->string('correo');
-            $table->integer('celular');
-            $table->foreignId('tipo_persona_id')->constrained('tipo_personas')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -29,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('remitentes');
+        Schema::dropIfExists('distritos');
     }
 };

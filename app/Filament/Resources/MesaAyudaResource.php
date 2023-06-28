@@ -69,6 +69,14 @@ class MesaAyudaResource extends Resource
                         ->relationship('TipoDocumento', 'nombre')
                         ->preload()
                         ->required(),
+                    Forms\Components\Select::make('oficina_id')
+                        ->relationship('oficina', 'nombre')
+                        ->preload()
+                        ->required(),
+                    Forms\Components\Select::make('procedimiento_id')
+                        ->relationship('procedimiento', 'nombre')
+                        ->preload()
+                        ->required(),
                 ])
             ]);
     }

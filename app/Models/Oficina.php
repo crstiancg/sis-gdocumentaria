@@ -9,9 +9,19 @@ class Oficina extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nombre'];
+    protected $fillable = ['nombre', 'area_id'];
 
-    public function Documento(){
+    public function documentos(){
         return $this->hasMany(Documento::class);
+    }
+
+    public function area()
+    {
+        return $this->belongsTo(Area::class);
+    }
+
+    public function ayudas()
+    {
+        return $this->hasMany(MesaAyuda::class);
     }
 }

@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\OficinaResource\Pages;
-use App\Filament\Resources\OficinaResource\RelationManagers;
-use App\Models\Oficina;
+use App\Filament\Resources\AreaResource\Pages;
+use App\Filament\Resources\AreaResource\RelationManagers;
+use App\Models\Area;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -13,11 +13,10 @@ use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class OficinaResource extends Resource
+class AreaResource extends Resource
 {
-    protected static ?string $model = Oficina::class;
+    protected static ?string $model = Area::class;
 
-    protected static ?string $navigationGroup = 'Contenido';
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
     public static function form(Form $form): Form
@@ -27,10 +26,6 @@ class OficinaResource extends Resource
                 Forms\Components\TextInput::make('nombre')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\Select::make('area_id')
-                    ->relationship('area', 'nombre')
-                    ->preload()
-                    ->required(),
             ]);
     }
 
@@ -39,7 +34,6 @@ class OficinaResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('nombre'),
-                Tables\Columns\TextColumn::make('area.nombre'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
                 Tables\Columns\TextColumn::make('updated_at')
@@ -60,7 +54,7 @@ class OficinaResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageOficinas::route('/'),
+            'index' => Pages\ManageAreas::route('/'),
         ];
     }    
 }

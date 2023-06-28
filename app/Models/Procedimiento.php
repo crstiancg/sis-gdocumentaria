@@ -5,17 +5,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TipoDocumento extends Model
+class Procedimiento extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nombre'];
+    protected $fillable = ['nombre', 'respuesta', 'clase_id'];
 
-    public function mesaAyudas(){
+    public function clase()
+    {
+        return $this->belongsTo(Clase::class);
+    }
+
+    public function ayudas()
+    {
         return $this->hasMany(MesaAyuda::class);
     }
 
-    public function documentos(){
+    public function documentos()
+    {
         return $this->hasMany(Documento::class);
     }
 }
