@@ -17,6 +17,12 @@ class ProcedimientoResource extends Resource
 {
     protected static ?string $model = Procedimiento::class;
 
+    protected static ?string $modelLabel = 'procedimiento';
+
+    protected static ?string $pluralModelLabel = 'Procedimientos';
+
+    protected static ?string $navigationLabel = 'Procedimientos';
+
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
     public static function form(Form $form): Form

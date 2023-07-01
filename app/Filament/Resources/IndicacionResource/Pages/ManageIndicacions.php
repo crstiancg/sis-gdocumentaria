@@ -10,6 +10,7 @@ class ManageIndicacions extends ManageRecords
 {
     protected static string $resource = IndicacionResource::class;
 
+
     protected function getActions(): array
     {
         return [

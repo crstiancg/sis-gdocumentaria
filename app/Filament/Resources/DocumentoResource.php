@@ -19,6 +19,12 @@ class DocumentoResource extends Resource
 {
     protected static ?string $model = Documento::class;
 
+    protected static ?string $modelLabel = 'documento';
+
+    protected static ?string $pluralModelLabel = 'Documentos';
+
+    protected static ?string $navigationLabel = 'Documentos';
+
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
     // public function query(Documento $query)

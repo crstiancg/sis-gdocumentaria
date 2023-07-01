@@ -22,7 +22,7 @@ return new class extends Migration
             $table->datetime('fechadoc');
             $table->longText('observacion');
             $table->string('respuesta');
-            // $table->enum("estado", ["Revision","Aceptado", "No Aceptado"])->nullable()->default('Revision');
+            $table->enum("estado", ["Pendiente","Aceptado", "Finalizado"])->nullable()->default('Pendiente');
             $table->foreignId('oficina_id')->constrained('oficinas')->onDelete('cascade');
             $table->foreignId('tipo_documento_id')->constrained('tipo_documentos')->onDelete('cascade');
             $table->foreignId('remitente_id')->constrained('remitentes')->onDelete('cascade');

@@ -17,6 +17,12 @@ class DistritoResource extends Resource
 {
     protected static ?string $model = Distrito::class;
 
+    protected static ?string $modelLabel = 'distrito';
+
+    protected static ?string $pluralModelLabel = 'Distritos';
+
+    protected static ?string $navigationLabel = 'Distritos';
+
     protected static ?string $navigationGroup = 'Contenido';
     
     protected static ?string $navigationIcon = 'heroicon-o-collection';

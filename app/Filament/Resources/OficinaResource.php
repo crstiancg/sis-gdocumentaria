@@ -17,6 +17,12 @@ class OficinaResource extends Resource
 {
     protected static ?string $model = Oficina::class;
 
+    protected static ?string $modelLabel = 'oficina';
+
+    protected static ?string $pluralModelLabel = 'Oficinas';
+
+    protected static ?string $navigationLabel = 'Oficinas';
+
     protected static ?string $navigationGroup = 'Contenido';
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 

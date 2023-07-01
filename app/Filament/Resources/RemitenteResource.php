@@ -18,6 +18,12 @@ class RemitenteResource extends Resource
 {
     protected static ?string $model = Remitente::class;
 
+    protected static ?string $modelLabel = 'administrado';
+
+    protected static ?string $pluralModelLabel = 'Administrados';
+
+    protected static ?string $navigationLabel = 'Administrados';
+
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
     public static function form(Form $form): Form

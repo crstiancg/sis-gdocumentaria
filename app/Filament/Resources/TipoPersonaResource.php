@@ -17,6 +17,13 @@ class TipoPersonaResource extends Resource
 {
     protected static ?string $model = TipoPersona::class;
 
+    
+    protected static ?string $modelLabel = 'tipo de persona';
+
+    protected static ?string $pluralModelLabel = 'Tipo de Personas';
+
+    protected static ?string $navigationLabel = 'Tipo de Personas';
+
     protected static ?string $navigationGroup = 'Contenido';
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';

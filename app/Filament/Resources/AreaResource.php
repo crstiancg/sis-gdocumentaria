@@ -17,6 +17,12 @@ class AreaResource extends Resource
 {
     protected static ?string $model = Area::class;
 
+    protected static ?string $modelLabel = 'área';
+
+    protected static ?string $pluralModelLabel = 'Áreas';
+
+    protected static ?string $navigationLabel = 'Áreas';
+    
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
     public static function form(Form $form): Form

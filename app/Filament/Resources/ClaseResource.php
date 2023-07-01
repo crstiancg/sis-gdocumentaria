@@ -17,6 +17,12 @@ class ClaseResource extends Resource
 {
     protected static ?string $model = Clase::class;
 
+    protected static ?string $modelLabel = 'clase';
+
+    protected static ?string $pluralModelLabel = 'Clases';
+
+    protected static ?string $navigationLabel = 'Clases';
+
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
     public static function form(Form $form): Form

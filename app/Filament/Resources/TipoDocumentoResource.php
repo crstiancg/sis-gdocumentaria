@@ -17,6 +17,12 @@ class TipoDocumentoResource extends Resource
 {
     protected static ?string $model = TipoDocumento::class;
 
+    protected static ?string $modelLabel = 'tipo de documento';
+
+    protected static ?string $pluralModelLabel = 'Tipo de Documentos';
+
+    protected static ?string $navigationLabel = 'Tipo de Documentos';
+
     protected static ?string $navigationGroup = 'Contenido';
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
