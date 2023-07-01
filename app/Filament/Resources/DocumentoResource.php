@@ -26,6 +26,11 @@ class DocumentoResource extends Resource
     //     $query->where('user_id', auth()->user()->id);
     // }
 
+    public function query(Documento $query)
+    {
+        $query->where('user_id', auth()->user()->id);
+    }
+
     public static function form(Form $form): Form
     {
         return $form

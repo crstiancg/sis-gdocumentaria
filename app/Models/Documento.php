@@ -25,7 +25,8 @@ class Documento extends Model
         'procedimiento_id',
         'indicacion_id',
         'remitente_id',
-        'user_id'];
+        'user_id'
+    ];
 
     public function oficina(){
         return $this->belongsTo(Oficina::class);
@@ -35,7 +36,7 @@ class Documento extends Model
         return $this->belongsTo(TipoDocumento::class);
     }
 
-    public function user():BelongsTo
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
