@@ -4,14 +4,16 @@ namespace App\Filament\Resources\PermissionResource\Pages;
 
 use App\Filament\Resources\PermissionResource;
 use Filament\Pages\Actions;
-use Filament\Resources\Pages\CreateRecord;
+use Filament\Resources\Pages\ManageRecords;
 
-class CreatePermission extends CreateRecord
+class ManagePermissions extends ManageRecords
 {
     protected static string $resource = PermissionResource::class;
 
-    protected function getRedirectUrl(): string
+    protected function getActions(): array
     {
-        return $this->getResource()::getUrl('index');
+        return [
+            Actions\CreateAction::make(),
+        ];
     }
 }
