@@ -2,18 +2,20 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\DocumentoResource\Pages;
-use App\Filament\Resources\DocumentoResource\RelationManagers;
-use App\Models\Documento;
 use Filament\Forms;
+use Filament\Tables;
+use App\Models\Documento;
+use App\Models\Remitente;
+use Filament\Resources\Form;
+use Filament\Resources\Table;
+use Filament\Resources\Resource;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Grid;
-use Filament\Resources\Form;
-use Filament\Resources\Resource;
-use Filament\Resources\Table;
-use Filament\Tables;
+use Filament\Tables\Actions\Action;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\DocumentoResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\DocumentoResource\RelationManagers;
 
 class DocumentoResource extends Resource
 {
@@ -35,8 +37,7 @@ class DocumentoResource extends Resource
     // public function query(Documento $query)
     // {
     //     $query->where('user_id', auth()->user()->id);
-    // }
-
+    // }    
     public static function form(Form $form): Form
     {
         return $form
@@ -142,7 +143,7 @@ class DocumentoResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\RemitenteRelationManager::class,
         ];
     }
 
