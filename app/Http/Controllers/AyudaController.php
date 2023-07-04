@@ -25,26 +25,15 @@ class AyudaController extends Controller
     {
         $tipo = TipoDocumento::all();
         $oficina = Oficina::all();
-        $procedimiento = Procedimiento::all();
+        // $procedimiento = Procedimiento::all();
         // dump($tipo, $oficina, $procedimiento);
-        return view('ayuda', compact('tipo', 'oficina', 'procedimiento'));
+        return view('ayuda', compact('tipo', 'oficina'));
     }
 
     
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'numero' => 'required',
-        //     'asunto' => 'required',
-        //     'archivo' => 'required',
-        //     'folio' => 'required',
-        //     // 'fingreso' => 'required',
-        //     // 'estado' => 'required',
-        //     // 'remitente_id' => 'required',
-        //     'tipo_documento_id' => 'required',
-        //     'oficina_id' => 'required',
-        //     'procedimiento_id' => 'required',
-        // ]);
+        $request->validate(MesaAyuda::$rule);
 
         $remitente = new Remitente();
         $remitente->dni =$request->dni;
@@ -72,11 +61,11 @@ class AyudaController extends Controller
         $ayuda->remitente_id = $remitente->id;
         $ayuda->tipo_documento_id = $request->tipo_documento;
         $ayuda->oficina_id = $request->oficina_id;
-        $ayuda->procedimiento_id = $request->procedimiento_id;
+        // $ayuda->procedimiento_id = $request->procedimiento_id;
         
         $ayuda->save();
 
-        return redirect()->back();
+        return redirect()->route('dashboard');
         
       
     }

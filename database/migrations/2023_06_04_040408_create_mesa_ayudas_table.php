@@ -22,7 +22,7 @@ return new class extends Migration
             $table->foreignId('remitente_id')->constrained('remitentes')->onDelete('cascade');
             $table->foreignId('tipo_documento_id')->constrained('tipo_documentos')->onDelete('cascade');
             $table->foreignId('oficina_id')->constrained('oficinas')->onDelete('cascade');
-            $table->foreignId('procedimiento_id')->constrained('procedimientos')->onDelete('cascade');
+            $table->foreignId('procedimiento_id')->nullable()->constrained('procedimientos')->onDelete('cascade');
             $table->timestamps();
         });
     }

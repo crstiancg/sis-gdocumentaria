@@ -21,6 +21,24 @@ class MesaAyuda extends Model
         'oficina_id',
         'procedimiento_id'];
 
+    public static $rule = [
+            'numero' => 'required',
+            'asunto' => 'required',
+            'archivo' => 'required',
+            'folio' => 'required',
+            // 'remitente_id' => 'required',
+            // 'tipo_documento' => 'required',
+            // 'oficina_id' => 'required',
+            // 'procedimiento_id' => 'required',
+            'dni'  => 'required',
+            'nombre'  => 'required',
+            'paterno' => 'required',
+            'materno' => 'required',
+            'correo' => 'required',
+            'celular' => 'required',
+            // 'tipo_persona_id' => 'required',
+    ];
+
     protected $casts = ['fingreso' => 'date'];
     public function remitente(){
         return $this->belongsTo(Remitente::class);

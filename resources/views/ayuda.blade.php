@@ -28,8 +28,9 @@
                         class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full"
                         onchange="mostrar()">
                             <option selected value>Seleccionar...</option>
-                            <option value="1" >Persona Jurídica</option>
-                            <option value="2" >Persona Natural</option>
+                            <option value="1">Persona Natural</option>
+                            <option value="2">Persona Jurídica</option>
+                        {{-- <x-input-error :messages="$errors->get('tipo_persona_id')"></x-input-error> --}}
                     </select>
                 </div>
                 <div class="bg-white rounded p-6 shadow-lg mb-4">
@@ -41,11 +42,13 @@
                         <div class="mb-4">
                             <x-input-label :required="true">Documento de Identidad</x-input-label>
                             <x-text-input type="text" class="w-full" name="dni" />
+                            <x-input-error :messages="$errors->get('dni')"></x-input-error>
                         </div>
 
                         <div class="mb-4">
                             <x-input-label :required="true">Apellido Paterno</x-input-label>
                             <x-text-input type="text" class="w-full" name="paterno" />
+                            <x-input-error :messages="$errors->get('paterno')"></x-input-error>
                         </div>
                     </div>
 
@@ -53,11 +56,13 @@
                         <div class="mb-4">
                             <x-input-label :required="true">Apellido Materno</x-input-label>
                             <x-text-input type="text" class="w-full" name="materno" />
+                            <x-input-error :messages="$errors->get('materno')"></x-input-error>
                         </div>
 
                         <div class="mb-4">
                             <x-input-label :required="true">Nombres</x-input-label>
                             <x-text-input type="text" class="w-full" name="nombre" />
+                            <x-input-error :messages="$errors->get('nombre')"></x-input-error>
                         </div>
                     </div>
 
@@ -66,12 +71,14 @@
                         <div class="mb-4">
                             <x-input-label :required="true">Número de Celular</x-input-label>
                             <x-text-input type="text" class="w-full" name="celular" />
+                            <x-input-error :messages="$errors->get('celular')"></x-input-error>
                         </div>
 
 
                         <div class="mb-4">
                             <x-input-label :required="true">Correo Electrónico</x-input-label>
                             <x-text-input type="text" class="w-full" name="correo"/>
+                            <x-input-error :messages="$errors->get('correo')"></x-input-error>
                         </div>
                     </div>
                     <div class="mb-4" id="otros" hidden>
@@ -82,7 +89,7 @@
 
                 <div class="bg-white rounded p-6 shadow-lg mb-6">
                     <div class="text-center font-semibold text-gray-800 rounded text-xl">
-                        <h2  class="text-center">DATOS DEL DOCUMENTO</h2>
+                        <h2 class="text-center">DATOS DEL DOCUMENTO</h2>
                     </div>
                     <hr>
                     <div class="mb-4 mt-4">
@@ -93,6 +100,7 @@
                         @foreach ($tipo as $item)
                             <option value="{{ $item->id }}" >{{ $item->nombre }}</option>
                         @endforeach
+                        {{-- <x-input-error :messages="$errors->get('tipo_documento')"></x-input-error> --}}
                         </select>
                     </div>
                     <div class="mb-4 mt-4">
@@ -105,7 +113,7 @@
                         </select>
                     </div>
 
-                    <div class="mb-4 mt-4">
+                    {{-- <div class="mb-4 mt-4">
                         <x-input-label :required="true">Procedimiento</x-input-label>
                         <select name="procedimiento_id" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full">
                         <option disabled selected>Seleccionar...</option>
@@ -113,7 +121,7 @@
                             <option value="{{ $item->id }}" >{{ $item->nombre }}</option>
                         @endforeach
                         </select>
-                    </div>
+                    </div> --}}
                     <div class="lg:columns-2">
                         <div class="mb-4">
                             <x-input-label :required="true">Número de Documento</x-input-label>
@@ -128,6 +136,7 @@
                         <div class="mb-4">
                             <x-input-label :required="true">Número de Folio</x-input-label>
                             <x-text-input type="text" class="w-full" name="folio" />
+                            <x-input-error :messages="$errors->get('folio')"></x-input-error>
                         </div>
                     </div>
 
@@ -137,6 +146,7 @@
                         <textarea type="text" rows="5"
                             class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full" 
                             name="asunto"></textarea>
+                            <x-input-error :messages="$errors->get('asunto')"></x-input-error>
                     </div>
 
                     <div class="">
@@ -146,6 +156,7 @@
                             Seleccionar documento
                             <input name="archivo" type="file" class="hidden">
                         </label>
+                        <x-input-error :messages="$errors->get('archivo')"></x-input-error>
                     </div>
 
                 </div>
@@ -160,7 +171,7 @@
 
     <script>
         const mostrar = () => {
-            if(document.getElementById('persona').value == 1){
+            if(document.getElementById('persona').value == 2){
                 document.getElementById('otros').hidden = false;
                 // console.console('otros');
             }else{
