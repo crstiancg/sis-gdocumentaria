@@ -9,15 +9,15 @@ class Departamento extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nombre', 'provincia_id'];
+    // protected $fillable = ['nombre', 'provincia_id'];
 
-    public function provincia()
-    {
-        return $this->belongsTo(Provincia::class);
-    }
+    // public function provincia()
+    // {
+    //     return $this->belongsTo(Provincia::class);
+    // }
 
-    public function remitentes()
-    {
-        return $this->hasMany(Remitente::class);
-    }
+    // public function remitentes()
+    // {
+    //     return $this->hasMany(Remitente::class);
+    // }
 }

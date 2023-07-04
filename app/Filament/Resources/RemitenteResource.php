@@ -62,10 +62,6 @@ class RemitenteResource extends Resource
                     Forms\Components\TextInput::make('razonsocial')
                         ->maxLength(9)
                         ->required(),
-                    Forms\Components\Select::make('departamento_id')
-                        ->relationship('departamento', 'nombre')
-                        ->preload()
-                        ->required(),
                 ])
             ]);
     }

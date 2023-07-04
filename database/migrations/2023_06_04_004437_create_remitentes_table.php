@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('razonsocial');
             $table->integer('celular');
             $table->foreignId('tipo_persona_id')->constrained('tipo_personas')->onDelete('cascade');
-            $table->foreignId('departamento_id')->constrained('departamentos')->onDelete('cascade');
+            // $table->foreignId('departamento_id')->constrained('departamentos')->onDelete('cascade');
             $table->timestamps();
         });
     }

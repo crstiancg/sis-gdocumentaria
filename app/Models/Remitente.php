@@ -18,7 +18,6 @@ class Remitente extends Model
         'celular',
         'razonsocial', 
         'tipo_persona_id',
-        'departamento_id',
     ];
 
 
@@ -31,10 +30,10 @@ class Remitente extends Model
         return $this->hasMany(MesaAyuda::class);
     }
 
-    public function departamento()
-    {
-        return $this->belongsTo(Departamento::class);
-    }
+    // public function departamento()
+    // {
+    //     return $this->belongsTo(Departamento::class);
+    // }
 
     public function documentos()
     {
