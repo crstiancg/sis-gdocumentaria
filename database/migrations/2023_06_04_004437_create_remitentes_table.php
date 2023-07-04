@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('paterno');
             $table->string('materno');
             $table->string('correo');
-            $table->string('razonsocial');
+            $table->string('razonsocial')->nullable();
             $table->integer('celular');
             $table->foreignId('tipo_persona_id')->constrained('tipo_personas')->onDelete('cascade');
             // $table->foreignId('departamento_id')->constrained('departamentos')->onDelete('cascade');

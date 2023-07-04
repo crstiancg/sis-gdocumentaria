@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('asunto');
             $table->string('archivo');
             $table->string('folio');
-            $table->datetime('fingreso');
+            $table->datetime('fingreso')->nullable();
             $table->enum("estado", ["Revision","Aceptado", "No Aceptado"])->nullable()->default('Revision');
             $table->foreignId('remitente_id')->constrained('remitentes')->onDelete('cascade');
             $table->foreignId('tipo_documento_id')->constrained('tipo_documentos')->onDelete('cascade');
