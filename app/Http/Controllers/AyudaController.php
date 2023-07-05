@@ -65,7 +65,7 @@ class AyudaController extends Controller
         
         $ayuda->save();
 
-        return redirect()->route('dashboard');
+        return redirect()->back()->with('enviarform_', 'ok');
         
       
     }

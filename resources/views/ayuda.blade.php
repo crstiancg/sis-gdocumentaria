@@ -15,7 +15,8 @@
         </div>
         <div>
         </div>
-        <form class="" action="{{ route('ayuda.store') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('ayuda.store') }}" method="post" enctype="multipart/form-data" class="data">
+            @method('POST')
             {{-- <x-validation-errors class="mb-4">
 
             </x-validation-errors> --}}
@@ -160,14 +161,46 @@
                     </div>
 
                 </div>
-                <div class="flex justify-center">
-                    <x-primary-button>
+                <div class="flex justify-center ">
+                    <button type="submit" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">Enviar Documento</button>
+                    {{-- <x-primary-button class="enviarform">
                         Enviar Documento
-                    </x-primary-button>
+                    </x-primary-button> --}}
                 </div>
         </form>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @if(session('enviarform_')=='ok')
+    <script>
+        Swal.fire(
+            'Se envió correctamente',
+            'Operación exitosa',
+            'success'
+        )
+    </script>
+    @endif
+    <script>
+        $('.data').submit(function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: '¿Esta seguro que quiere enviar?',
+                text: '',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '¡Si, quiero enviar!',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.submit();
+                }
+            })
+        });
+    </script>
 
     <script>
         const mostrar = () => {

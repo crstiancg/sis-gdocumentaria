@@ -22,7 +22,6 @@
                     <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
                 </a>
             </div> --}}
-
             <div class="w-full">
 
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
@@ -30,6 +29,7 @@
                 </div>
             </div>
         </div>
+
         @livewireScripts
     </body>
 </html>
