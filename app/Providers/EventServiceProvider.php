@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Documento;
+use App\Models\MesaAyuda;
+use App\Observers\DocumentoObserver;
+use App\Observers\MesaAyudaObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -25,7 +29,8 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Documento::observe(DocumentoObserver::class);
+        MesaAyuda::observe(MesaAyudaObserver::class);
     }
 
     /**
