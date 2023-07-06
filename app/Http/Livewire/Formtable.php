@@ -8,7 +8,7 @@ use Livewire\WithPagination;
 
 class Formtable extends Component
 {
-    public $search="";
+    public $search = "";
     // public $estado = "Revision";
     public $sortField;
     public $sortDirection = 'ASC';
@@ -18,10 +18,30 @@ class Formtable extends Component
     {
         $this->sortField = $field;
     }
+    public $searchResult;
+
+    public function buscarAsunto()
+    {
+        //$this->searchResult = MesaAyuda::where('asunto', $this->search)->get();
+
+
+        /* $this->searchResult = MesaAyuda::where(function ($query) {
+             $query->where('asunto', 'LIKE', '%' . $this->search . '%')
+                 ->orWhere('numero', 'LIKE', '%' . $this->search . '%');
+         })
+             ->get();*/
+
+        $this->searchResult = MesaAyuda::where(function ($query) {
+            $query->where('asunto', $this->search)
+                ->orWhere('numero', $this->search);
+        })
+            ->get();
+
+    }
 
     public function render()
     {
-        return view('livewire.formtable',[
+        return view('livewire.formtable', [
 
             'noaceptado' => MesaAyuda::select('*')->search("asunto", $this->search)->get(),
             // 'aceptado' => MesaAyuda::select('*')->where('estado','Aceptado')->orderby('id','desc')->search("asunto", $this->search)->paginate(1) ---->where('estado',$this->estado),
@@ -42,5 +62,5 @@ class Formtable extends Component
     // {
     //     $this->estado = $status;
     // }
-    
+
 }
