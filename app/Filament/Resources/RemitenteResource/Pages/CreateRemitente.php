@@ -10,8 +10,11 @@ class CreateRemitente extends CreateRecord
 {
     protected static string $resource = RemitenteResource::class;
 
+    protected static bool $canCreateAnother = false;
+    
     protected function getRedirectUrl(): string
     {
         return route('filament.resources.documentos.create');
     }
+
 }

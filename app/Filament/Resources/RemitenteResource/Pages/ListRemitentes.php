@@ -5,6 +5,7 @@ namespace App\Filament\Resources\RemitenteResource\Pages;
 use App\Filament\Resources\RemitenteResource;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\ListRecords;
+use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 
 class ListRemitentes extends ListRecords
 {
@@ -13,7 +14,12 @@ class ListRemitentes extends ListRecords
     protected function getActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            // Actions\CreateAction::make(),
         ];
+    }
+
+    protected function getTableQuery(): EloquentBuilder
+    {
+        return parent::getTableQuery()->orderBy('id', 'DESC');
     }
 }

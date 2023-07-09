@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\RemitenteResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\RemitenteResource\RelationManagers;
+use Closure;
 
 class RemitenteResource extends Resource
 {
@@ -36,6 +37,7 @@ class RemitenteResource extends Resource
                         ->label('Tipo de persona')
                         ->relationship('TipoPersona', 'nombre')
                         ->preload()
+                        ->reactive()
                         ->required(),
                     Forms\Components\TextInput::make('dni')
                         ->label('DNI')
@@ -60,8 +62,8 @@ class RemitenteResource extends Resource
                         ->maxLength(9)
                         ->required(),
                     Forms\Components\TextInput::make('razonsocial')
+                        ->hidden(fn (Closure $get) => $get('tipo_persona_id') == 1)
                         ->maxLength(9)
-                        ->required(),
                 ])
             ]);
     }
@@ -72,9 +74,7 @@ class RemitenteResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('TipoPersona.nombre'),
                 Tables\Columns\TextColumn::make('dni'),
-                Tables\Columns\TextColumn::make('nombre'),
-                Tables\Columns\TextColumn::make('paterno'),
-                Tables\Columns\TextColumn::make('materno'),
+                Tables\Columns\TextColumn::make('full_name')->label('Administrado'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->since()->label('Registrado'),
             ])
