@@ -12,7 +12,11 @@ class UserPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->hasRole(['Administrador','Prueba']);
+        if($user->hasRole('Administrador') || $user->hasPermissionTo('Ver usuarios')){
+            return true;
+        }
+        return false; 
+
     }
 
     /**
@@ -28,7 +32,11 @@ class UserPolicy
      */
     public function create(User $user): bool
     {
-        return $user->hasRole('Administrador');
+        if($user->hasRole('Administrador') || $user->hasPermissionTo('Crear usuarios')){
+            return true;
+        }
+        return false; 
+
     }
 
     /**
@@ -36,7 +44,11 @@ class UserPolicy
      */
     public function update(User $user): bool
     {
-        return $user->hasRole('Administrador');
+        if($user->hasRole('Administrador') || $user->hasPermissionTo('Editar usuarios')){
+            return true;
+        }
+        return false; 
+
     }
 
     /**
@@ -44,7 +56,9 @@ class UserPolicy
      */
     public function delete(User $user): bool
     {
-        return $user->hasRole('Administrador');
+        if($user->hasRole('Administrador') || $user->hasPermissionTo('Eliminar usuarios')){
+            return true;
+        }
     }
 
     /**

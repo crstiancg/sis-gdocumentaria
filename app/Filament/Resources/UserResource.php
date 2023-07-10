@@ -39,6 +39,7 @@ class UserResource extends Resource
                 Card::make()->schema([
                     Forms\Components\TextInput::make('name')
                         ->label('Nombre')
+                        ->placeholder('Ingrese el nombre completo')
                         ->required()
                         ->maxLength(255),
                     Forms\Components\TextInput::make('email')
@@ -47,6 +48,7 @@ class UserResource extends Resource
                         ->maxLength(255),
                     Forms\Components\TextInput::make('password')
                         ->label('Contraseña')
+                        ->placeholder('Debe contener al menos 8 dígitos')
                         ->password()
                         ->required(fn (Page $livewire) => ($livewire instanceof CreateRecord))
                         ->minLength(8)

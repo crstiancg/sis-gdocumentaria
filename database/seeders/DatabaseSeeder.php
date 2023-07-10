@@ -33,11 +33,19 @@ class DatabaseSeeder extends Seeder
         $role = Role::create(['name' => 'Administrador']);
         $user->assignRole($role);
 
+        $this->call(RoleSeeder::class);
+        
+        
+        
         Area::factory(10)->create();
         Oficina::factory(10)->create();
         TipoPersona::factory(2)->create();
         TipoDocumento::factory(10)->create();
         Clase::factory(10)->create();
         Procedimiento::factory(10)->create();
+
+
+
+
     }
 }

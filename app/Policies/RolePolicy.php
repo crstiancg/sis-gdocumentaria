@@ -13,7 +13,11 @@ class RolePolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->hasRole('Administrador');
+        if($user->hasRole('Administrador') || $user->hasPermissionTo('Ver roles')){
+            return true;
+        }
+        return false; 
+
     }
 
     /**
@@ -29,7 +33,11 @@ class RolePolicy
      */
     public function create(User $user): bool
     {
-        return $user->hasRole('Administrador');
+        if($user->hasRole('Administrador') || $user->hasPermissionTo('Crear roles')){
+            return true;
+        }
+        return false; 
+
     }
 
     /**
@@ -37,7 +45,11 @@ class RolePolicy
      */
     public function update(User $user, Role $role): bool
     {
-        return $user->hasRole('Administrador');
+        if($user->hasRole('Administrador') || $user->hasPermissionTo('Editar roles')){
+            return true;
+        }
+        return false; 
+
     }
 
     /**
@@ -45,7 +57,11 @@ class RolePolicy
      */
     public function delete(User $user, Role $role): bool
     {
-        return $user->hasRole('Administrador');
+        if($user->hasRole('Administrador') || $user->hasPermissionTo('Eliminar roles')){
+            return true;
+        }
+        return false; 
+
     }
 
     /**

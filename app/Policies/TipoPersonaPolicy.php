@@ -2,18 +2,18 @@
 
 namespace App\Policies;
 
-use App\Models\Permission;
+use App\Models\TipoPersona;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class PermissionPolicy
+class TipoPersonaPolicy
 {
     /**
      * Determine whether the user can view any models.
      */
     public function viewAny(User $user): bool
     {
-        if($user->hasRole('Administrador') || $user->hasPermissionTo('Ver permisos')){
+        if($user->hasRole('Administrador') || $user->hasPermissionTo('Ver tipo de personas')){
             return true;
         }
         return false; 
@@ -23,7 +23,7 @@ class PermissionPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Permission $permission): bool
+    public function view(User $user, TipoPersona $tipoPersona): bool
     {
         return false;
     }
@@ -33,7 +33,7 @@ class PermissionPolicy
      */
     public function create(User $user): bool
     {
-        if($user->hasRole('Administrador') || $user->hasPermissionTo('Crear permisos')){
+        if($user->hasRole('Administrador') || $user->hasPermissionTo('Crear tipo de personas')){
             return true;
         }
         return false; 
@@ -43,9 +43,9 @@ class PermissionPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Permission $permission): bool
+    public function update(User $user, TipoPersona $tipoPersona): bool
     {
-        if($user->hasRole('Administrador') || $user->hasPermissionTo('Editar permisos')){
+        if($user->hasRole('Administrador') || $user->hasPermissionTo('Editar tipo de personas')){
             return true;
         }
         return false; 
@@ -55,9 +55,9 @@ class PermissionPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Permission $permission): bool
+    public function delete(User $user, TipoPersona $tipoPersona): bool
     {
-        if($user->hasRole('Administrador') || $user->hasPermissionTo('Eliminar permisos')){
+        if($user->hasRole('Administrador') || $user->hasPermissionTo('Eliminar tipo de personas')){
             return true;
         }
         return false; 
@@ -67,7 +67,7 @@ class PermissionPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Permission $permission): bool
+    public function restore(User $user, TipoPersona $tipoPersona): bool
     {
         return false;
     }
@@ -75,7 +75,7 @@ class PermissionPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Permission $permission): bool
+    public function forceDelete(User $user, TipoPersona $tipoPersona): bool
     {
         return false;
     }

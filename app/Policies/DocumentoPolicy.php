@@ -2,18 +2,18 @@
 
 namespace App\Policies;
 
-use App\Models\Permission;
+use App\Models\Documento;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class PermissionPolicy
+class DocumentoPolicy
 {
     /**
      * Determine whether the user can view any models.
      */
     public function viewAny(User $user): bool
     {
-        if($user->hasRole('Administrador') || $user->hasPermissionTo('Ver permisos')){
+        if($user->hasRole('Administrador') || $user->hasPermissionTo('Ver documentos')){
             return true;
         }
         return false; 
@@ -23,7 +23,7 @@ class PermissionPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Permission $permission): bool
+    public function view(User $user, Documento $documento): bool
     {
         return false;
     }
@@ -33,7 +33,7 @@ class PermissionPolicy
      */
     public function create(User $user): bool
     {
-        if($user->hasRole('Administrador') || $user->hasPermissionTo('Crear permisos')){
+        if($user->hasRole('Administrador') || $user->hasPermissionTo('Crear documentos')){
             return true;
         }
         return false; 
@@ -43,9 +43,9 @@ class PermissionPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Permission $permission): bool
+    public function update(User $user, Documento $documento): bool
     {
-        if($user->hasRole('Administrador') || $user->hasPermissionTo('Editar permisos')){
+        if($user->hasRole('Administrador') || $user->hasPermissionTo('Editar documentos')){
             return true;
         }
         return false; 
@@ -55,9 +55,9 @@ class PermissionPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Permission $permission): bool
+    public function delete(User $user, Documento $documento): bool
     {
-        if($user->hasRole('Administrador') || $user->hasPermissionTo('Eliminar permisos')){
+        if($user->hasRole('Administrador') || $user->hasPermissionTo('Eliminar documentos')){
             return true;
         }
         return false; 
@@ -67,7 +67,7 @@ class PermissionPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Permission $permission): bool
+    public function restore(User $user, Documento $documento): bool
     {
         return false;
     }
@@ -75,7 +75,7 @@ class PermissionPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Permission $permission): bool
+    public function forceDelete(User $user, Documento $documento): bool
     {
         return false;
     }
