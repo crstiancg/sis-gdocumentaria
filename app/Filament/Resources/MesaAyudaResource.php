@@ -92,9 +92,9 @@ class MesaAyudaResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('Remitente.nombre'),
-                Tables\Columns\TextColumn::make('numero'),
-                Tables\Columns\TextColumn::make('asunto'),
+                Tables\Columns\TextColumn::make('Remitente.nombre')->searchable(),
+                Tables\Columns\TextColumn::make('numero')->searchable(),
+                Tables\Columns\TextColumn::make('asunto')->searchable(),
                 BadgeColumn::make('estado')
                     ->enum([
                         'Revisión' => 'En revisión',
@@ -107,7 +107,7 @@ class MesaAyudaResource extends Resource
                         'success' => 'Aceptado',
                         'danger' => 'No Aceptado',
                     ]),
-                Tables\Columns\TextColumn::make('TipoDocumento.nombre'),
+                Tables\Columns\TextColumn::make('TipoDocumento.nombre')->searchable(),
                 Tables\Columns\TextColumn::make('fingreso')
                     ->since()->label('Registrado'),
             ])

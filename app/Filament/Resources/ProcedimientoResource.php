@@ -46,9 +46,9 @@ class ProcedimientoResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('nombre'),
-                Tables\Columns\TextColumn::make('respuesta'),
-                Tables\Columns\TextColumn::make('clase.nombre'),
+                Tables\Columns\TextColumn::make('nombre')->searchable(),
+                Tables\Columns\TextColumn::make('respuesta')->searchable(),
+                Tables\Columns\TextColumn::make('clase.nombre')->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
                 Tables\Columns\TextColumn::make('updated_at')

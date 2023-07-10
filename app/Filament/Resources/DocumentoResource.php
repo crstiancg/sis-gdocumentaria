@@ -29,16 +29,9 @@ class DocumentoResource extends Resource
     protected static ?string $navigationLabel = 'Documentos';
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
+    
+    protected static ?string $recordTitleAttribute = 'remitente.full_name';
 
-    // public function query(Documento $query)
-    // {
-    //     $query->where('user_id', auth()->user()->id);
-    // }
-
-    // public function query(Documento $query)
-    // {
-    //     $query->where('user_id', auth()->user()->id);
-    // }
 
     public static function form(Form $form): Form
     {
@@ -124,9 +117,9 @@ class DocumentoResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('Oficina.nombre'),
-                Tables\Columns\TextColumn::make('TipoDocumento.nombre'),
-                Tables\Columns\TextColumn::make('folio'),
+                Tables\Columns\TextColumn::make('Oficina.nombre')->searchable(),
+                Tables\Columns\TextColumn::make('TipoDocumento.nombre')->searchable(),
+                Tables\Columns\TextColumn::make('folio')->searchable(),
                 //ProgressColumn::make('folio')
                 //    ->color('warning'),
                 ProgressColumn::make('progress'),
@@ -164,4 +157,9 @@ class DocumentoResource extends Resource
             'edit' => Pages\EditDocumento::route('/{record}/edit'),
         ];
     }
+
+    // public static function getGlobalSearchResultTitle(Model $record)
+    // {
+    //     return $record->remitente->full_name;
+    // }
 }

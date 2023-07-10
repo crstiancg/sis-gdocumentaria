@@ -25,6 +25,9 @@ class AreaResource extends Resource
     
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
+    // protected static ?string $recordTitleAttribute = 'nombre';
+
+
     public static function form(Form $form): Form
     {
         return $form
@@ -39,7 +42,7 @@ class AreaResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('nombre'),
+                Tables\Columns\TextColumn::make('nombre')->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
                 Tables\Columns\TextColumn::make('updated_at')
@@ -62,5 +65,10 @@ class AreaResource extends Resource
         return [
             'index' => Pages\ManageAreas::route('/'),
         ];
-    }    
+    }   
+    
+//     public static function getGlobalSearchResultTitle(Model $record)
+//     {
+//         return 'Resultado'.$record->nombre;
+//     }
 }

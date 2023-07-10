@@ -72,9 +72,9 @@ class RemitenteResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('TipoPersona.nombre'),
-                Tables\Columns\TextColumn::make('dni'),
-                Tables\Columns\TextColumn::make('full_name')->label('Administrado'),
+                Tables\Columns\TextColumn::make('TipoPersona.nombre')->searchable(),
+                Tables\Columns\TextColumn::make('dni')->searchable(),
+                Tables\Columns\TextColumn::make('full_name')->label('Administrado')->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->since()->label('Registrado'),
             ])

@@ -39,7 +39,7 @@ class IndicacionResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('nombre'),
+                Tables\Columns\TextColumn::make('nombre')->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
                 Tables\Columns\TextColumn::make('updated_at')

@@ -44,7 +44,7 @@ class OficinaResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('nombre'),
+                Tables\Columns\TextColumn::make('nombre')->searchable(),
                 Tables\Columns\TextColumn::make('area.nombre'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
