@@ -38,6 +38,11 @@ class RoleResource extends Resource
                     ->required()    
                     ->maxLength(255)
                     ->unique(ignoreRecord: true),
+                Select::make('permissions')
+                    ->label('Permisos')
+                    ->required()
+                    ->multiple()
+                    ->relationship('permissions', 'name')->preload()
             ]);
     }
 

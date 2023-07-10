@@ -38,14 +38,15 @@ class UserResource extends Resource
             ->schema([
                 Card::make()->schema([
                     Forms\Components\TextInput::make('name')
+                        ->label('Nombre')
                         ->required()
                         ->maxLength(255),
                     Forms\Components\TextInput::make('email')
                         ->email()
                         ->required()
                         ->maxLength(255),
-                    Forms\Components\DateTimePicker::make('email_verified_at'),
                     Forms\Components\TextInput::make('password')
+                        ->label('Contraseña')
                         ->password()
                         ->required(fn (Page $livewire) => ($livewire instanceof CreateRecord))
                         ->minLength(8)
@@ -55,14 +56,16 @@ class UserResource extends Resource
                         ->dehydrateStateUsing(fn ($state) => Hash::make($state)),
                     Forms\Components\TextInput::make('passwordConfirmation')
                         ->password()
-                        ->label("Password Confirmation")
+                        ->label('Confirmar contraseña')
                         ->required(fn (Page $livewire) => ($livewire instanceof CreateRecord))
                         ->minLength(8)
                         ->dehydrated(false),
                     Select::make('roles')
+                        ->label('Roles')
                         ->multiple()
                         ->relationship('roles', 'name')->preload(),
                     Select::make('permissions')
+                        ->label('Permisos')
                         ->multiple()
                         ->relationship('permissions', 'name')->preload()
                 ])->columns(2)
@@ -74,7 +77,7 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')->searchable(),
+                Tables\Columns\TextColumn::make('name')->searchable()->label('Nombre'),
                 Tables\Columns\TextColumn::make('email'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
