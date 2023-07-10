@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\DocumentoResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\DocumentoResource\RelationManagers;
+use RyanChandler\FilamentProgressColumn\ProgressColumn;
 
 class DocumentoResource extends Resource
 {
@@ -37,7 +38,7 @@ class DocumentoResource extends Resource
     // public function query(Documento $query)
     // {
     //     $query->where('user_id', auth()->user()->id);
-    // }    
+    // }
 
     public static function form(Form $form): Form
     {
@@ -126,6 +127,10 @@ class DocumentoResource extends Resource
                 Tables\Columns\TextColumn::make('Oficina.nombre'),
                 Tables\Columns\TextColumn::make('TipoDocumento.nombre'),
                 Tables\Columns\TextColumn::make('folio'),
+                //ProgressColumn::make('folio')
+                //    ->color('warning'),
+                ProgressColumn::make('progress'),
+
                 Tables\Columns\TextColumn::make('fingreso')
                     ->dateTime()
                     ->since(),

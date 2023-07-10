@@ -11,16 +11,16 @@ class Documento extends Model
     use HasFactory;
 
     protected $fillable = [
-        'numero', 
-        'asunto', 
-        'archivo', 
-        'folio', 
+        'numero',
+        'asunto',
+        'archivo',
+        'folio',
         'ntramite',
-        'fingreso', 
+        'fingreso',
         'fechadoc',
         'observacion',
-        'respuesta', 
-        'oficina_id', 
+        'respuesta',
+        'oficina_id',
         'tipo_documento_id',
         'procedimiento_id',
         'indicacion_id',
