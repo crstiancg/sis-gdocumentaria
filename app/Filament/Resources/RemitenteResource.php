@@ -14,6 +14,8 @@ use App\Filament\Resources\RemitenteResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\RemitenteResource\RelationManagers;
 use Closure;
+use AlperenErsoy\FilamentExport\Actions\FilamentExportHeaderAction;
+use AlperenErsoy\FilamentExport\Actions\FilamentExportBulkAction;
 
 class RemitenteResource extends Resource
 {
@@ -88,19 +90,23 @@ class RemitenteResource extends Resource
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
+                FilamentExportHeaderAction::make('Export'),
+
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
+                FilamentExportBulkAction::make('export')
+
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -109,5 +115,5 @@ class RemitenteResource extends Resource
             'view' => Pages\ViewRemitente::route('/{record}'),
             'edit' => Pages\EditRemitente::route('/{record}/edit'),
         ];
-    }    
+    }
 }

@@ -17,6 +17,8 @@ use App\Filament\Resources\DocumentoResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\DocumentoResource\RelationManagers;
 use RyanChandler\FilamentProgressColumn\ProgressColumn;
+use AlperenErsoy\FilamentExport\Actions\FilamentExportHeaderAction;
+use AlperenErsoy\FilamentExport\Actions\FilamentExportBulkAction;
 
 class DocumentoResource extends Resource
 {
@@ -29,7 +31,7 @@ class DocumentoResource extends Resource
     protected static ?string $navigationLabel = 'Documentos';
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
-    
+
     protected static ?string $recordTitleAttribute = 'remitente.full_name';
 
 
@@ -163,9 +165,13 @@ class DocumentoResource extends Resource
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
+                FilamentExportHeaderAction::make('Export'),
+
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
+                FilamentExportBulkAction::make('export')
+
             ]);
     }
 
