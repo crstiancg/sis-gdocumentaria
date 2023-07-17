@@ -23,7 +23,9 @@ class ProcedimientoResource extends Resource
 
     protected static ?string $navigationLabel = 'Procedimientos';
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-view-list';
+
+    protected static ?string $navigationGroup = 'Especificaciones TUPA';
 
     public static function form(Form $form): Form
     {

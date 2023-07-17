@@ -16,12 +16,14 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\MesaAyudaResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\MesaAyudaResource\RelationManagers;
+use AlperenErsoy\FilamentExport\Actions\FilamentExportHeaderAction;
+use AlperenErsoy\FilamentExport\Actions\FilamentExportBulkAction;
 
 class MesaAyudaResource extends Resource
 {
     protected static ?string $model = MesaAyuda::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-folder-open';
 
     protected static ?string $modelLabel = 'mesa de ayuda';
 
@@ -29,7 +31,7 @@ class MesaAyudaResource extends Resource
 
     protected static ?string $navigationLabel = 'Mesa de Ayuda';
 
-    protected static ?string $navigationGroup = 'Mesa de ayuda';
+    protected static ?string $navigationGroup = 'Documentos';
 
     protected static ?string $activeNavigationIcon = 'heroicon-s-document-text';
 
@@ -60,7 +62,7 @@ class MesaAyudaResource extends Resource
                         ->label('Fecha de Ingreso')
                         ->default(now())
                         ->required(),
-                        
+
                     Select::make('estado')
                     ->options([
                                 'Revisión' => 'En revisión',
@@ -118,19 +120,23 @@ class MesaAyudaResource extends Resource
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
+                FilamentExportHeaderAction::make('Export'),
+
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
+                FilamentExportBulkAction::make('export')
+
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -139,5 +145,5 @@ class MesaAyudaResource extends Resource
             'view' => Pages\ViewMesaAyuda::route('/{record}'),
             'edit' => Pages\EditMesaAyuda::route('/{record}/edit'),
         ];
-    }    
+    }
 }

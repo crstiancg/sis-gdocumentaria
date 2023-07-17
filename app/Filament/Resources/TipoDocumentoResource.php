@@ -12,6 +12,7 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+ 
 
 class TipoDocumentoResource extends Resource
 {
@@ -23,9 +24,10 @@ class TipoDocumentoResource extends Resource
 
     protected static ?string $navigationLabel = 'Tipo de Documentos';
 
-    protected static ?string $navigationGroup = 'Contenido';
+    protected static ?string $navigationGroup = 'GDU';
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-view-boards';
+
 
     public static function form(Form $form): Form
     {
