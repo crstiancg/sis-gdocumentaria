@@ -41,6 +41,9 @@ class RemitenteResource extends Resource
                         ->required(),
                     Forms\Components\TextInput::make('dni')
                         ->label('DNI')
+                        ->hint(fn ($state, $component) => 'left: ' . $component->getMaxLength() - strlen($state) . ' characters')
+                        ->maxlength(8)
+                        ->lazy()
                         ->required()
                         ->maxLength(8),
                     Forms\Components\TextInput::make('nombre')

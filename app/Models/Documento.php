@@ -10,6 +10,18 @@ class Documento extends Model
 {
     use HasFactory;
 
+    public function incremento()
+    {
+        $contador = Documento::latest()->first()->numero??null;
+        if($contador==null){
+            return 1;
+        }else{
+            return $contador = $contador + 1;
+        }
+
+        // return $contador;
+    }
+
     protected $fillable = [
         'numero',
         'asunto',
@@ -21,6 +33,7 @@ class Documento extends Model
         'observacion',
         'respuesta',
         'oficina_id',
+        'estado',
         'tipo_documento_id',
         'procedimiento_id',
         'indicacion_id',
@@ -55,4 +68,6 @@ class Documento extends Model
     {
         return $this->belongsTo(Remitente::class);
     }
+
+    
 }

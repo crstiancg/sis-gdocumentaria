@@ -54,6 +54,12 @@ class DocumentoResource extends Resource
                         Forms\Components\Select::make('indicacion_id')
                             ->relationship('indicacion', 'nombre')
                             ->required(),
+                        Forms\Components\Select::make('estado')
+                            ->options([
+                                'Pendiente' => 'Pendiente',
+                                'Aceptado' => 'Aceptado',
+                                'Finalizado' => 'Finalizado',
+                            ])->default('Pendiente'),
                         Forms\Components\Select::make('tipo_documento_id')
                             ->label('Tipo de documento')
                             ->relationship('TipoDocumento', 'nombre')
@@ -61,9 +67,13 @@ class DocumentoResource extends Resource
                             ->required(),
                         Forms\Components\TextInput::make('numero')
                             ->label('Número de documento')
+                            ->integer()
+                             ->maxValue(100)
                             ->required(),
                         Forms\Components\TextInput::make('ntramite')
                             ->label('Número de tramite')
+                            ->integer()
+                             ->maxValue(100)
                             ->required(),
                         Forms\Components\TextInput::make('respuesta')
                             ->label('Respuesta')
@@ -74,7 +84,8 @@ class DocumentoResource extends Resource
                             ->maxLength(255),
                         Forms\Components\TextInput::make('folio')
                             ->required()
-                            ->maxLength(255),
+                            ->integer()
+                             ->maxValue(100),
                         Forms\Components\DateTimePicker::make('fechadoc')
                             ->label('Fecha de documento')
                             ->required(),
@@ -109,6 +120,11 @@ class DocumentoResource extends Resource
                             ->default(now())
                             ->disabled()
                             ->required(),
+                        Forms\Components\Select::make('user_id')
+                            ->relationship('User', 'name')
+                            ->label('Asignar al Usuario')
+                            ->default(1)
+                            ->required(),
                     ])->columnSpan(5)
             ])->columns(12);
     }
@@ -122,7 +138,19 @@ class DocumentoResource extends Resource
                 Tables\Columns\TextColumn::make('folio')->searchable(),
                 //ProgressColumn::make('folio')
                 //    ->color('warning'),
-                ProgressColumn::make('progress'),
+                Tables\Columns\BadgeColumn::make('estado')
+                    ->enum([
+                        'Pendiente' => 'Pendiente',
+                        'Aceptado' => 'Aceptado',
+                        'Finalizado' => 'Finalizado',
+                    ])
+                    ->colors([
+                        'secondary' => 'Pendiente',
+                        'warning' => 'reviewing',
+                        'success' => 'Aceptado',
+                        'danger' => 'Finalizado',
+                    ]),
+                // ProgressColumn::make('numero')->color('primary'),
 
                 Tables\Columns\TextColumn::make('fingreso')
                     ->dateTime()

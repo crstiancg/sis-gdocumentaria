@@ -6,6 +6,7 @@ use App\Filament\Resources\AreaResource\Pages;
 use App\Filament\Resources\AreaResource\RelationManagers;
 use App\Models\Area;
 use Filament\Forms;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -32,9 +33,11 @@ class AreaResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('nombre')
-                    ->required()
-                    ->maxLength(255),
+                TextInput::make('nombre')
+                ->reactive()
+                ->label('count')
+                ->disabled()
+                ->placeholder(fn ($record) => $record->count())
             ]);
     }
 
