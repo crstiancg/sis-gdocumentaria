@@ -25,6 +25,9 @@ class ClaseResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
+    protected static ?string $navigationGroup = 'Especificaciones TUPA';
+
+
     public static function form(Form $form): Form
     {
         return $form

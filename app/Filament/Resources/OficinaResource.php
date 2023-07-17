@@ -23,8 +23,9 @@ class OficinaResource extends Resource
 
     protected static ?string $navigationLabel = 'Oficinas';
 
-    protected static ?string $navigationGroup = 'Contenido';
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationGroup = 'GDU';
+    
+    protected static ?string $navigationIcon = 'heroicon-o-office-building';
 
     public static function form(Form $form): Form
     {

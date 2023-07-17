@@ -27,7 +27,9 @@ class RemitenteResource extends Resource
 
     protected static ?string $navigationLabel = 'Administrados';
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
+
+    protected static ?string $navigationGroup = 'Documentos';
 
     public static function form(Form $form): Form
     {

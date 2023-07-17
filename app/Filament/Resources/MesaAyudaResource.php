@@ -23,7 +23,7 @@ class MesaAyudaResource extends Resource
 {
     protected static ?string $model = MesaAyuda::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-folder-open';
 
     protected static ?string $modelLabel = 'mesa de ayuda';
 
@@ -31,7 +31,7 @@ class MesaAyudaResource extends Resource
 
     protected static ?string $navigationLabel = 'Mesa de Ayuda';
 
-    protected static ?string $navigationGroup = 'Mesa de ayuda';
+    protected static ?string $navigationGroup = 'Documentos';
 
     protected static ?string $activeNavigationIcon = 'heroicon-s-document-text';
 
