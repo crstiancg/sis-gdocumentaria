@@ -24,7 +24,10 @@ class AreaResource extends Resource
 
     protected static ?string $navigationLabel = 'Áreas';
     
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-menu-alt-1';
+
+    protected static ?string $navigationGroup = 'GDU';
+
 
     // protected static ?string $recordTitleAttribute = 'nombre';
 

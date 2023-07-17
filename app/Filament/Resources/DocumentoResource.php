@@ -28,9 +28,11 @@ class DocumentoResource extends Resource
 
     protected static ?string $navigationLabel = 'Documentos';
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-folder-open';
     
     protected static ?string $recordTitleAttribute = 'remitente.full_name';
+
+    protected static ?string $navigationGroup = 'Documentos';
 
 
     public static function form(Form $form): Form
