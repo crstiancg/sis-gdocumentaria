@@ -22,7 +22,7 @@ class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
-    
+
     protected static ?string $modelLabel = 'usuario';
 
     protected static ?string $pluralModelLabel = 'Usuarios';
@@ -46,20 +46,24 @@ class UserResource extends Resource
                         ->email()
                         ->required()
                         ->maxLength(255),
+                    Forms\Components\Select::make('oficina_id')
+                        ->relationship('Oficina', 'nombre')
+                        ->default(3)
+                        ->required(),
                     Forms\Components\TextInput::make('password')
                         ->label('Contraseña')
                         ->placeholder('Debe contener al menos 8 dígitos')
                         ->password()
-                        ->required(fn (Page $livewire) => ($livewire instanceof CreateRecord))
+                        ->required(fn(Page $livewire) => ($livewire instanceof CreateRecord))
                         ->minLength(8)
                         ->maxLength(255)
                         ->same('passwordConfirmation')
-                        ->dehydrated(fn ($state) => filled($state))
-                        ->dehydrateStateUsing(fn ($state) => Hash::make($state)),
+                        ->dehydrated(fn($state) => filled($state))
+                        ->dehydrateStateUsing(fn($state) => Hash::make($state)),
                     Forms\Components\TextInput::make('passwordConfirmation')
                         ->password()
                         ->label('Confirmar contraseña')
-                        ->required(fn (Page $livewire) => ($livewire instanceof CreateRecord))
+                        ->required(fn(Page $livewire) => ($livewire instanceof CreateRecord))
                         ->minLength(8)
                         ->dehydrated(false),
                     Select::make('roles')
@@ -71,7 +75,7 @@ class UserResource extends Resource
                         ->multiple()
                         ->relationship('permissions', 'name')->preload()
                 ])->columns(2)
-                
+
             ]);
     }
 
@@ -81,6 +85,7 @@ class UserResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')->searchable()->label('Nombre'),
                 Tables\Columns\TextColumn::make('email'),
+                Tables\Columns\TextColumn::make('Oficina.nombre')->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
                 Tables\Columns\TextColumn::make('updated_at')
@@ -97,14 +102,14 @@ class UserResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -112,5 +117,5 @@ class UserResource extends Resource
             'create' => Pages\CreateUser::route('/create'),
             'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
-    }    
+    }
 }

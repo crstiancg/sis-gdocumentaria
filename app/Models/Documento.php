@@ -38,11 +38,17 @@ class Documento extends Model
         'procedimiento_id',
         'indicacion_id',
         'remitente_id',
-        'user_id'
+        'user_id',
+        'derivar_documento_id'
     ];
+
 
     public function oficina(){
         return $this->belongsTo(Oficina::class);
+    }
+
+    public function derivardocumento(){
+        return $this->belongsTo(DerivarDocumento::class);
     }
 
     public function tipoDocumento(){
@@ -69,5 +75,5 @@ class Documento extends Model
         return $this->belongsTo(Remitente::class);
     }
 
-    
+
 }

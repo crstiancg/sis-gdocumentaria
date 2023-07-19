@@ -24,4 +24,8 @@ class Oficina extends Model
     {
         return $this->hasMany(MesaAyuda::class);
     }
+    public function user(){
+        return $this->hasMany(Documento::class);
+    }
+
 }

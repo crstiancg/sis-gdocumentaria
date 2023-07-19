@@ -46,8 +46,7 @@ class DocumentoResource extends Resource
                     ->schema([
                         Forms\Components\Select::make('oficina_id')
                             ->relationship('Oficina', 'nombre')
-                            ->default(3)
-                            ->required(),
+                            ->default(3),
                         Forms\Components\Select::make('remitente_id')
                             ->relationship('remitente', 'full_name')
                             ->searchable()
@@ -73,12 +72,12 @@ class DocumentoResource extends Resource
                         Forms\Components\TextInput::make('numero')
                             ->label('Número de documento')
                             ->integer()
-                             ->maxValue(100)
+                            ->maxValue(100)
                             ->required(),
                         Forms\Components\TextInput::make('ntramite')
                             ->label('Número de tramite')
                             ->integer()
-                             ->maxValue(100)
+                            ->maxValue(100)
                             ->required(),
                         Forms\Components\TextInput::make('respuesta')
                             ->label('Respuesta')
@@ -90,7 +89,7 @@ class DocumentoResource extends Resource
                         Forms\Components\TextInput::make('folio')
                             ->required()
                             ->integer()
-                             ->maxValue(100),
+                            ->maxValue(100),
                         Forms\Components\DateTimePicker::make('fechadoc')
                             ->label('Fecha de documento')
                             ->required(),
@@ -125,11 +124,15 @@ class DocumentoResource extends Resource
                             ->default(now())
                             ->disabled()
                             ->required(),
+                        Forms\Components\Select::make('derivar_documento_id')
+                            ->relationship('Derivaroficina', 'nombre')
+                            ->label('Derivar')
+                            ->default(1),
                         Forms\Components\Select::make('user_id')
                             ->relationship('User', 'name')
                             ->label('Asignar al Usuario')
-                            ->default(1)
-                            ->required(),
+                            ->default(1),
+
                     ])->columnSpan(5)
             ])->columns(12);
     }
@@ -138,7 +141,6 @@ class DocumentoResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('Oficina.nombre')->searchable(),
                 Tables\Columns\TextColumn::make('TipoDocumento.nombre')->searchable(),
                 Tables\Columns\TextColumn::make('folio')->searchable(),
                 //ProgressColumn::make('folio')

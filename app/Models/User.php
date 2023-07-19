@@ -15,7 +15,7 @@ class User extends Authenticatable //implements FilamentUser
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
-    
+
     /**
      * The attributes that are mass assignable.
      *
@@ -24,6 +24,7 @@ class User extends Authenticatable //implements FilamentUser
     protected $fillable = [
         'name',
         'email',
+        'oficina_id',
         'password',
     ];
 
@@ -52,6 +53,9 @@ class User extends Authenticatable //implements FilamentUser
         return $this->hasRole(['Administrador', 'Especialista']);
     }*/
 
+    public function oficina(){
+        return $this->belongsTo(Oficina::class);
+    }
     public function documentos()
     {
         return $this->hasMany(Documento::class);
