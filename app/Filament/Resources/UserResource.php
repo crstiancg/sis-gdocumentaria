@@ -46,8 +46,8 @@ class UserResource extends Resource
                         ->email()
                         ->required()
                         ->maxLength(255),
-                    Forms\Components\Select::make('oficina_id')
-                        ->relationship('Oficina', 'nombre')
+                    Forms\Components\Select::make('derivar_documento_id')
+                        ->relationship('DerivarDocumento', 'nombre')
                         ->default(3)
                         ->required(),
                     Forms\Components\TextInput::make('password')
@@ -85,7 +85,7 @@ class UserResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')->searchable()->label('Nombre'),
                 Tables\Columns\TextColumn::make('email'),
-                Tables\Columns\TextColumn::make('Oficina.nombre')->searchable(),
+                Tables\Columns\TextColumn::make('derivar_documento.nombre')->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
                 Tables\Columns\TextColumn::make('updated_at')

@@ -15,4 +15,10 @@ class DerivarDocumento extends Model
     public function documento(){
         return $this->hasMany(Documento::class);
     }
+
+    public function user(){
+        return $this->hasMany(User::class);
+    }
+
 }
+

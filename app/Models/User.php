@@ -24,7 +24,7 @@ class User extends Authenticatable //implements FilamentUser
     protected $fillable = [
         'name',
         'email',
-        'oficina_id',
+        'derivar_documento_id',
         'password',
     ];
 
@@ -53,8 +53,8 @@ class User extends Authenticatable //implements FilamentUser
         return $this->hasRole(['Administrador', 'Especialista']);
     }*/
 
-    public function oficina(){
-        return $this->belongsTo(Oficina::class);
+    public function derivarDocumento(){
+        return $this->belongsTo(DerivarDocumento::class);
     }
     public function documentos()
     {
