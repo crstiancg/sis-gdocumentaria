@@ -125,7 +125,7 @@ class DocumentoResource extends Resource
                             ->disabled()
                             ->required(),
                         Forms\Components\Select::make('derivar_documento_id')
-                            ->relationship('DerivarDocumento', 'nombre')
+                            ->relationship('derivar_documento', 'nombre')
                             ->label('Derivar')
                             ->default(1),
                         Forms\Components\Select::make('user_id')

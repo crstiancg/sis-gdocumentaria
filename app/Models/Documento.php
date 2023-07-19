@@ -47,7 +47,7 @@ class Documento extends Model
         return $this->belongsTo(Oficina::class);
     }
 
-    public function derivardocumento(){
+    public function derivar_documento(){
         return $this->belongsTo(DerivarDocumento::class);
     }
 
